@@ -1,4 +1,6 @@
 import {
+    TextField,
+    Button,
     Paper,
     List,
 } from "@mui/material";
@@ -18,9 +20,7 @@ const getFoodInfo = searchword => {
 }
 const SearchBar = ({ search, onChange }) => {
     return (
-        <div>
-            <input className="input" type="text" value={search} onChange={onChange}/>
-        </div>
+        <TextField id="foodsearchbar" label="음식이름" variant="standard" value={search} onChange={onChange}/>
     )
     SearchBar.propTypes = {
     search: PropTypes.any.isRequired,
@@ -39,14 +39,14 @@ const Fooddb = () => {
         alert(e.target.value + " 의 칼로리는 " + getFoodInfo(e.target.value)['에너지(kcal)'])
     }
     const range = ['식품명', '식품중량', '에너지(kcal)', '탄수화물(g)', '단백질(g)', '지방(g)']
-    const searchedFoods = foodname.filter(n => n.includes(search));
+    const searchedFoodsName = foodname.filter(n => n.includes(search));
     const selectedFood = selected;
     return (
         <>
             <SearchBar value={search} onChange={onChange} />
             <Paper style={{maxHeight: '400px', maxWidth: '300px', overflow: 'auto'}}>
                 <List>
-                    {searchedFoods.map(n => <li><button value={n} onClick={onSelected}>{n}</button></li>)}
+                    {searchedFoodsName.map(n => <li><Button value={n} onClick={onSelected}>{n}</Button></li>)}
                 </List>
             </Paper>
 
