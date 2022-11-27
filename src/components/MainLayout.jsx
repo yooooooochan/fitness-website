@@ -11,6 +11,7 @@ import {
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import logo from "../assets/images/logo.jpg";
+import Fooddb from "./Fooddb.jsx";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -119,7 +120,7 @@ const MainLayout = () => {
                 루틴 추천 및 검색입니다.
             </TabPanel>
             <TabPanel value={value} index={2}>
-                칼로리 계산입니다.
+                <Fooddb></Fooddb> 
             </TabPanel>
             <TabPanel value={value} index={3}>
                 운동 친구 찾기입니다.
