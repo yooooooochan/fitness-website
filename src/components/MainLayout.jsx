@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import logo from "../assets/images/logo.jpg";
 import Fooddb from "./Fooddb.jsx";
+import MapComponent from "./MapComponent.jsx";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -120,10 +121,10 @@ const MainLayout = () => {
                 루틴 추천 및 검색입니다.
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Fooddb></Fooddb> 
+                <Fooddb />
             </TabPanel>
             <TabPanel value={value} index={3}>
-                운동 친구 찾기입니다.
+                <MapComponent />
             </TabPanel>
         </>
     );
