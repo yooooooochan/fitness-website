@@ -14,6 +14,7 @@ import logo from "../assets/images/logo.jpg";
 import Fooddb from "./Fooddb.jsx";
 import MapComponent from "./MapComponent.jsx";
 import CalendarComponent from "./CalendarComponent.jsx";
+import "../style/style.css";;
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
