@@ -30,21 +30,27 @@ const ExerciseComponent = (props) => {
     // const [activity, setActivity] = useState("");
     const [infos, setInfos] = useState({
         activity: "",
-        weight: "",
-        duration: ""
+        weight: 0,
+        duration: 0,
     });
     const { activity, weight, duration } = infos;
     const onChange = (e) => {
         const { value, name } = e.target;
         setInfos({
-            [name]: value,
+            ...infos,
+            [name]: value
         });
     }
     const onClick = (e) => {
-        alert(infos.activity);
-        alert(infos.weight);
-        alert(infos.duration);
-        console.log(infos);
+        fetch('https://api.api-ninjas.com/v1/caloriesburned?activity=' + infos.activity+ '&weight=' + infos.weight * 2.25 + '&duration=' + infos.duration, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            'X-Api-Key': 'mHhSVAsfZe9ySo8lij6cHw==6YJ8Cx7ELggSzH11'
+        },
+        })
+        .then((response) => response.json())
+        .then((data) => alert(data[0]['total_calories']));
     }
     // const searchedCalory
     return (
