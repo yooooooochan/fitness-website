@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import logo from "../assets/images/logo.jpg";
 import Fooddb from "./Fooddb.jsx";
 import MapComponent from "./MapComponent.jsx";
+import CalendarComponent from "./CalendarComponent.jsx";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -115,7 +116,7 @@ const MainLayout = () => {
                 </AppBar>
             </Box>
             <TabPanel value={value} index={0}>
-                캘린더입니다.
+                <CalendarComponent />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 루틴 추천 및 검색입니다.
