@@ -14,11 +14,8 @@ import logo from "../assets/images/logo.jpg";
 import Fooddb from "./Fooddb.jsx";
 import MapComponent from "./MapComponent.jsx";
 import CalendarComponent from "./CalendarComponent.jsx";
-<<<<<<< HEAD
-import "../style/style.css";;
-=======
+import "../style/style.css";
 import ExerciseComponent from "./ExerciseComponent.jsx";
->>>>>>> dev_exercise
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
