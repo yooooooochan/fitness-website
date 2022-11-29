@@ -22,7 +22,7 @@ const CalendarComponent = () => {
                                 maxRows={3}
                                 sx={{
                                     "& .MuiInputBase-root": {
-                                        height: 80,
+                                        height: 100,
                                     },
                                 }}
                             ></TextField>
