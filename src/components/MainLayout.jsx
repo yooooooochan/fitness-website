@@ -16,6 +16,7 @@ import MapComponent from "./MapComponent.jsx";
 import CalendarComponent from "./CalendarComponent.jsx";
 import "../style/style.css";
 import ExerciseComponent from "./ExerciseComponent.jsx";
+import FindExercise from "./FindExercise.jsx";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -121,10 +122,11 @@ const MainLayout = () => {
                 <CalendarComponent />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <ExerciseComponent />
+                <FindExercise />
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <Fooddb />
+                <ExerciseComponent />
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <MapComponent />
