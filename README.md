@@ -1,8 +1,4 @@
 ![logo](https://i.ibb.co/PMd12pf/png.png)
-
-
-
-# :muscle:SKKU - Fitness
 >운동 및 건강 관리에 관심이 있는 학우들을 위해 편의기능을 제공하는 웹페이지입니다
 
 <i>[소개 동영상 (Youtube)](https://youtube.com)</i>
