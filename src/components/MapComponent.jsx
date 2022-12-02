@@ -42,7 +42,13 @@ const Mapbox = () => {
                         />
                         <div className="label" style={{ color: "#000" }}>
                             <span className="left"></span>
-                            <span className="center">1번 사람 정보</span>
+
+                            <h5 className="center">김율전</h5>
+
+                            <h5 className="center">010-1234-5678</h5>
+
+                            <h5 className="center">"같이 운동해요!"</h5>
+
                             <span className="right"></span>
                         </div>
                     </div>
@@ -69,7 +75,9 @@ const Mapbox = () => {
                         />
                         <div className="label" style={{ color: "#000" }}>
                             <span className="left"></span>
-                            <span className="center">2번 사람 정보</span>
+                            <h5 className="center">박명륜</h5>
+                            <h5 className="center">010-1111-2222</h5>
+                            <h5 className="center">"운동 친구 구해요~"</h5>
                             <span className="right"></span>
                         </div>
                     </div>
