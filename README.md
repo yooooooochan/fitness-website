@@ -2,7 +2,8 @@
 
 ![logo](https://i.ibb.co/PMd12pf/png.png)
 >운동 및 건강 관리에 관심이 있는 학우들을 위해 편의기능을 제공하는 웹페이지입니다
-:muscle:<i>[소개 동영상 (Youtube)](https://youtube.com)</i>
+
+:muscle:<i>[소개 동영상 (Youtube)](https://www.youtube.com/watch?v=ldXJsjl7_UI)</i>
 
 <details>
 <summary><h2>목차</h2></summary>
@@ -108,15 +109,27 @@ npm start
 ## 기능
 
 ### `Calendar`
+
+![캘린더](https://user-images.githubusercontent.com/104424579/205296681-042b774f-cfce-476e-8d36-a5472ecd49f7.jpg)
+
 운동 루틴을 기록할 수 있도록 달력 기능을 제공합니다.
 
 ### `Find Your Exercise`
+
+![운동 검색](https://user-images.githubusercontent.com/104424579/205297105-8fa626e6-9718-4288-8c19-80283fc59cd6.jpg)
+
 본인에게 필요한 운동을 검색하고 소모 칼로리 등을 확인 할 수 있습니다.
 
 ### `Calory Calculator`
+
+![칼로리계산](https://user-images.githubusercontent.com/104424579/205303155-a18f357d-859c-4c03-8cd3-29b9bf227334.jpg)
+
 오늘 먹은 음식과 수행한 운동을 검색해서 칼로리 계산을 수행할 수 있습니다.
 
 ### `Find a Partner`
+
+![지도](https://user-images.githubusercontent.com/104424579/205298488-3b5f885f-8a0b-49ab-a220-88311d7097a1.jpg)
+
 성균관대 주변의 헬스장 정보를 찾거나 같이할 파트너를 찾아볼 수 있습니다.
 
 <br/>
