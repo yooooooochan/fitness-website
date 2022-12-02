@@ -1,4 +1,4 @@
-import { TextField, Button, Stack, Typography, Divider } from "@mui/material";
+import { Select, MenuItem, Button, Stack, Typography, Divider } from "@mui/material";
 import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -6,9 +6,27 @@ import ListItemText from "@mui/material/ListItemText";
 const ExerciseComponent = (props) => {
     const [value, setValue] = useState("");
     const [list, setList] = useState([]);
-
+    const muscles = [
+        { kor: '복근', eng: 'abdominals' },
+        { kor: '외전근', eng: 'abductors' },
+        { kor: '내전근', eng: 'adductors' },
+        { kor: '이두근', eng: 'biceps' },
+        { kor: '삼두근', eng: 'triceps' },
+        { kor: '사두근', eng: 'quadriceps' },
+        { kor: '종아리', eng: 'calves' },
+        { kor: '대흉근', eng: 'chest' },
+        { kor: '전완근', eng: 'forearms' },
+        { kor: '둔근', eng: 'glutes' },
+        { kor: '햄스트링', eng: 'hamstrings' },
+        { kor: '광배근', eng: 'lats' },
+        { kor: '허리하부근육', eng: 'lower_back' },
+        { kor: '허리중부근육', eng: 'middle_back' },
+        { kor: '목', eng: 'neck' },
+        { kor: '승모근', eng: 'traps' },
+    ];
     const handleChange = (event) => {
         setValue(event.target.value);
+        console.log(muscles);
     };
 
     const handleClick = (event) => {
@@ -25,13 +43,14 @@ const ExerciseComponent = (props) => {
     return (
         <>
             <Stack direction="column" spacing={2}>
-                <TextField
-                    label="운동"
+                <Select
+                    label="근육"
                     id="labelactivity"
-                    name="exercise"
                     value={value}
                     onChange={handleChange}
-                />
+                >
+                    {muscles.map(n => <MenuItem value={n.eng}>{n.kor}</MenuItem>)}
+                </Select>
                 <Button
                     id="buttonfindcal"
                     onClick={handleClick}
