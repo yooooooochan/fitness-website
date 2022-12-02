@@ -1,63 +1,81 @@
-import {
-    TextField,
-    Button,
-    Paper,
-    List,
-} from "@mui/material";
-import PropTypes from "prop-types";
+import { TextField, Button, Stack, Typography, Divider } from "@mui/material";
 import React, { useState } from "react";
-const FindCaloryButton = (props) => {
-
-}
-const TextField_EX = (props) => {
-    const { text, onChange, id, label, name, ...others } = props;
-    return (
-        <>
-            <TextField label={label} id={id} value={text} name={name} onChange={onChange}>
-            </TextField>
-        </>
-    );
-
-    TextField_EX.propTypes = {
-        search: PropTypes.any.isRequired,
-        onChange: PropTypes.func.isRequired,
-        id: PropTypes.any.isRequired,
-        name: PropTypes.any.isRequired,
-        label: PropTypes.any.isRequired
-    }
-}
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 const ExerciseComponent = (props) => {
-    // const [activity, setActivity] = useState("");
-    const [infos, setInfos] = useState({
-        exercise: "",
-        output: "",
-    });
-    const { exercise } = infos;
-    const onChange = (e) => {
-        const { value, name } = e.target;
-        setInfos({
-            ...infos,
-            [name]: value
-        });
-    }
-    const onClick = (e) => {
-        fetch('https://api.api-ninjas.com/v1/exercises?muscle=' + infos.exercise, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            'X-Api-Key': 'mHhSVAsfZe9ySo8lij6cHw==6YJ8Cx7ELggSzH11'
-        },
+    const [value, setValue] = useState("");
+    const [list, setList] = useState([]);
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+
+    const handleClick = (event) => {
+        fetch("https://api.api-ninjas.com/v1/exercises?muscle=" + value, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Api-Key": "mHhSVAsfZe9ySo8lij6cHw==6YJ8Cx7ELggSzH11",
+            },
         })
-        .then((response) => response.json())
-        .then((data) => infos.output = data);
-    }
-    // const searchedCalory
+            .then((response) => response.json())
+            .then((data) => setList(data));
+    };
     return (
         <>
-            <TextField_EX label="운동" id="labelactivity" name="exercise" value={exercise} onChange={onChange} />
-            <Button id="buttonfindcal" onClick={onClick} variant="outlined">운동찾기</Button>
-            <TextField id="output" name="output"/>
+            <Stack direction="column" spacing={2}>
+                <TextField
+                    label="운동"
+                    id="labelactivity"
+                    name="exercise"
+                    value={value}
+                    onChange={handleChange}
+                />
+                <Button
+                    id="buttonfindcal"
+                    onClick={handleClick}
+                    variant="outlined"
+                >
+                    운동 찾기
+                </Button>
+                <List
+                    sx={{
+                        width: "200%",
+                        maxWidth: 360,
+                        bgcolor: "#cccccc",
+                    }}
+                >
+                    {list.length !== 0 ? (
+                        list.map((value) => {
+                            console.log(value);
+                            return (
+                                <>
+                                    <ListItem>
+                                        <Stack direction={"column"}>
+                                            <ListItemText
+                                                primary={"Name: " + value.name}
+                                                secondary={
+                                                    "Muscle: " + value.muscle
+                                                }
+                                            />
+                                            <ListItemText
+                                                secondary={value.instructions}
+                                            />
+                                        </Stack>
+                                    </ListItem>
+                                    <Divider />
+                                </>
+                            );
+                        })
+                    ) : (
+                        <ListItem>
+                            <Typography>검색 결과가 없습니다.</Typography>
+                        </ListItem>
+                    )}
+                </List>
+            </Stack>
         </>
     );
-}
+};
 export default ExerciseComponent;
