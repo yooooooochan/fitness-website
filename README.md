@@ -100,14 +100,6 @@ npm start
     - [https://projects.wojtekmaj.pl/react-calendar/](https://projects.wojtekmaj.pl/react-calendar/)
 
 <br/>
-### `Calendar`
-운동 루틴을 기록할 수 있도록 달력 기능을 제공합니다.
-### `Find Your Exercise`
-본인에게 필요한 운동을 검색하고 소모 칼로리 등을 확인 할 수 있습니다.
-### `Calory Calculator`
-오늘 먹은 음식과 수행한 운동을 검색해서 칼로리 계산을 수행할 수 있습니다.
-### `Find a Partner`
-성균관대 주변의 헬스장 정보를 찾거나 같이할 파트너를 찾아볼 수 있습니다.
 
 ## 기능
 
