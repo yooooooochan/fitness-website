@@ -3,11 +3,13 @@ import {
     Button,
     Paper,
     List,
+    Stack,
+    Typography,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import foodname from "../assets/fooddb_name.json"
-import fooddata from "../assets/fooddb_data.json"
+import foodname from "../assets/fooddb_name.json";
+import fooddata from "../assets/fooddb_data.json";
 const ExerciseComponent = (props) => {
     const { exlist, setExlist } = props;
     const [infos, setInfos] = useState({
@@ -60,6 +62,8 @@ const ExerciseComponent = (props) => {
                 name="activity"
                 value={activity}
                 onChange={handleActivityChange}
+                size={"small"}
+                sx={{ marginBottom: "10px" }}
             />
             <TextField
                 label="몸무게"
@@ -67,6 +71,8 @@ const ExerciseComponent = (props) => {
                 name="weight"
                 value={weight}
                 onChange={handleWeightChange}
+                sx={{ marginBottom: "10px" }}
+                size={"small"}
             />
             <TextField
                 label="지속 시간"
@@ -74,6 +80,8 @@ const ExerciseComponent = (props) => {
                 name="duration"
                 value={duration}
                 onChange={handleDurationChange}
+                sx={{ marginBottom: "10px" }}
+                size={"small"}
             />
             <Button id="buttonfindcal" onClick={onClick} variant="outlined">
                 운동 검색
@@ -86,91 +94,145 @@ const ExerciseComponent = (props) => {
     };
 };
 
-const getFoodInfo = searchword => {
-    const searchresult = fooddata['records'].filter(food => food.식품명 === searchword)
-    if (searchresult.length == 0) throw new Error("음식을 찾지 못했습니다")
-    const range = ['식품명', '식품중량', '에너지(kcal)', '탄수화물(g)', '단백질(g)', '지방(g)']
-    let output = []
-    range.forEach(info => output[info] = searchresult[0][info])
-    return output
-}
+const getFoodInfo = (searchword) => {
+    const searchresult = fooddata["records"].filter(
+        (food) => food.식품명 === searchword
+    );
+    if (searchresult.length == 0) throw new Error("음식을 찾지 못했습니다");
+    const range = [
+        "식품명",
+        "식품중량",
+        "에너지(kcal)",
+        "탄수화물(g)",
+        "단백질(g)",
+        "지방(g)",
+    ];
+    let output = [];
+    range.forEach((info) => (output[info] = searchresult[0][info]));
+    return output;
+};
 const SearchBar = ({ search, onChange }) => {
     return (
-        <TextField id="foodsearchbar" label="음식이름" variant="standard" value={search} onChange={onChange}/>
-    )
+        <TextField
+            id="foodsearchbar"
+            label="음식이름"
+            variant="standard"
+            value={search}
+            onChange={onChange}
+        />
+    );
     SearchBar.propTypes = {
-    search: PropTypes.any.isRequired,
-    onChange:PropTypes.func.isRequired,
-    }
-}
+        search: PropTypes.any.isRequired,
+        onChange: PropTypes.func.isRequired,
+    };
+};
 
 const CaloryComponent = () => {
     const [totalcal, setTotalcal] = useState(0);
-    const [all, setAll] = useState([])
+    const [all, setAll] = useState([]);
     const [search, setSearch] = useState("");
     const [selected, setSelected] = useState("");
     const [exlist, setExlist] = useState([]);
-    const onChange = e => {
+    const onChange = (e) => {
         setSearch(e.target.value);
-    }
-    const onSelected_food = e => {
+    };
+    const onSelected_food = (e) => {
         setSelected(e.target.value);
-        let cal = parseInt(getFoodInfo(e.target.value)['에너지(kcal)']);
+        let cal = parseInt(getFoodInfo(e.target.value)["에너지(kcal)"]);
         pushtoAll(e.target.value, cal);
-    }
-    const onSelected_ex = e => {
+    };
+    const onSelected_ex = (e) => {
         let cal;
-        exlist.forEach(n => {
-            if (n.name == e.target.value) {
-                cal = -parseInt(n.total_calories);
-            }
-        })
-        pushtoAll(e.target.value, cal);
-    }
+        if (exlist.length !== 0) {
+            exlist.forEach((n) => {
+                if (n.name === e.target.value) {
+                    cal = -parseInt(n.total_calories);
+                }
+            });
+            pushtoAll(e.target.value, cal);
+        }
+    };
     const pushtoAll = (name, calory) => {
         all.push({
             name: name,
             calory: calory,
-        })
+        });
         let sum = 0;
-        all.forEach(n => {
+        all.forEach((n) => {
             sum += parseInt(n["calory"]);
-        })
+        });
         setTotalcal(sum);
     };
-    const range = ['식품명', '식품중량', '에너지(kcal)', '탄수화물(g)', '단백질(g)', '지방(g)']
-    const searchedFoodsName = foodname.filter(n => n.includes(search));
+    const range = [
+        "식품명",
+        "식품중량",
+        "에너지(kcal)",
+        "탄수화물(g)",
+        "단백질(g)",
+        "지방(g)",
+    ];
+    const searchedFoodsName = foodname.filter((n) => n.includes(search));
     const selectedFood = selected;
     return (
         <>
-            <SearchBar value={search} onChange={onChange} />
-            <Paper style={{maxHeight: '400px', maxWidth: '300px', overflow: 'auto'}}>
+            <Stack>
+                <SearchBar value={search} onChange={onChange} />
+                <Paper
+                    style={{
+                        maxHeight: "200px",
+                        maxWidth: "100%",
+                        overflow: "auto",
+                        marginBottom: "20px",
+                    }}
+                >
+                    <List>
+                        {searchedFoodsName.length !== -0 ? (
+                            searchedFoodsName.map((n) => (
+                                <li>
+                                    <Button value={n} onClick={onSelected_food}>
+                                        {n}
+                                    </Button>
+                                </li>
+                            ))
+                        ) : (
+                            <></>
+                        )}
+                    </List>
+                </Paper>
+                <ExerciseComponent exlist={exlist} setExlist={setExlist} />
+            </Stack>
+
+            <Paper
+                style={{
+                    maxHeight: "200px",
+                    maxWidth: "100%",
+                    overflow: "auto",
+                }}
+            >
                 <List>
-                    {searchedFoodsName.map(n => <li><Button value={n} onClick={onSelected_food}>{n}</Button></li>)}
+                    {exlist.length !== undefined ? (
+                        exlist.map((n) => (
+                            <li>
+                                <Button value={n.name} onClick={onSelected_ex}>
+                                    {n.name + "[" + n.total_calories + " Kcal]"}
+                                </Button>
+                            </li>
+                        ))
+                    ) : (
+                        <Typography>검색 결과가 없습니다.</Typography>
+                    )}
                 </List>
             </Paper>
-            <ExerciseComponent exlist={exlist} setExlist={setExlist} />
-            <Paper style={{maxHeight: '800px', maxWidth: '300px', overflow: 'auto'}}>
-                <List>
-                    {exlist.map(n =>
-                        <li>
-                            <Button value={n.name} onClick={onSelected_ex} >
-                                {n.name + "[" + n.total_calories + " Kcal]"}
-                            </Button>
-                        </li>)
-                    }
-                </List>
-            </Paper>
-            <Paper>
-                오늘 총 칼로리: {totalcal}
-            </Paper>
+            <Paper>오늘 총 칼로리: {totalcal}</Paper>
             <Paper>
                 <List>
-                    { all.map(n => <li>{n.name + ", 칼로리: " + n.calory}</li>) }
+                    {all.map((n) => (
+                        <li>{n.name + ", 칼로리: " + n.calory}</li>
+                    ))}
                 </List>
             </Paper>
         </>
     );
-}
+};
 
 export default CaloryComponent;
