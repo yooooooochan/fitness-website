@@ -11,11 +11,10 @@ import {
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import logo from "../assets/images/logo.jpg";
-import Fooddb from "./Fooddb.jsx";
+import CaloryComponent from "./CaloryComponent.jsx";
 import MapComponent from "./MapComponent.jsx";
 import CalendarComponent from "./CalendarComponent.jsx";
 import "../style/style.css";
-import ExerciseComponent from "./ExerciseComponent.jsx";
 import FindExercise from "./FindExercise.jsx";
 
 function TabPanel(props) {
@@ -125,8 +124,7 @@ const MainLayout = () => {
                 <FindExercise />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Fooddb />
-                <ExerciseComponent />
+                <CaloryComponent />
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <MapComponent />
