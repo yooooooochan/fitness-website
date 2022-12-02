@@ -17,7 +17,9 @@
 
 [4. 기능](#기능)
 
-[7. 작성 정보](#작성-정보)
+[5. 배포](#배포)
+
+[6. 작성 정보](#작성-정보)
 
 </div>
 </details>
@@ -133,6 +135,17 @@ npm start
 성균관대 주변의 헬스장 정보를 찾거나 같이할 파트너를 찾아볼 수 있습니다.
 
 <br/>
+
+## 배포
+
+현재 해당 프로젝트는 [gh-pages](https://pages.github.com/)를 통해 [https://yooooooochan.github.io/fitness-website/](https://yooooooochan.github.io/fitness-website/)에 배포되고 있습니다.
+
+본 Repository의 Collaborator로 등록된 사용자는 
+```bash
+npm run predeploy
+npm run deploy
+```
+명령어를 이용해 수동 배포를 진행할 수 있습니다.
 
 ## 작성 정보
 
