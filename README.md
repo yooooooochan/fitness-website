@@ -1,5 +1,9 @@
 # SKKU - Fitness
 
+![logo](https://i.ibb.co/PMd12pf/png.png)
+>운동 및 건강 관리에 관심이 있는 학우들을 위해 편의기능을 제공하는 웹페이지입니다
+:muscle:<i>[소개 동영상 (Youtube)](https://youtube.com)</i>
+
 <details>
 <summary><h2>목차</h2></summary>
 <div markdown="1">       
@@ -19,7 +23,7 @@
 
 ## 프로젝트 소개
 
-### 컬리 계정관리 IAM 시스템
+### SKKU - Fitness
 
 프로젝트 진행기간: 2022.10 ~ 2022.12
 
@@ -128,3 +132,5 @@ npm start
 ### 최종 작성일
 
 - 22.12.02(금)
+
+우수 프로젝트 시상 프로그램에 지원합니다.
